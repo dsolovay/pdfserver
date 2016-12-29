@@ -1,30 +1,25 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using PdfServer.Converter;
+using PdfServer.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
 namespace PdfServer.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : PdfBaseController
     {
-        public ActionResult Index()
+        // GET: Home
+        public ActionResult Index() => View();
+
+        public ActionResult Templates()
         {
-            return View();
-        }
+            var files = System.IO.Directory.EnumerateFiles(Server.MapPath("~/Views/Templates")).Select(x => x.Substring(x.LastIndexOf(@"\") + 1));
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return ToJson(files);
         }
     }
 }
