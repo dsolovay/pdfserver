@@ -15,11 +15,9 @@ namespace PdfServer.Controllers
         // GET: Home
         public ActionResult Index() => View();
 
-        public ActionResult Templates()
-        {
-            var files = System.IO.Directory.EnumerateFiles(Server.MapPath("~/Views/Templates")).Select(x => x.Substring(x.LastIndexOf(@"\") + 1));
-
-            return ToJson(files);
-        }
+        public ActionResult Templates() => 
+            ToJson(System.IO.Directory
+                .EnumerateFiles(Server.MapPath("~/Views/Templates"))
+                .Select(x => x.Substring(x.LastIndexOf(@"\") + 1)));
     }
 }

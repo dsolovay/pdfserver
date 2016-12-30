@@ -1,11 +1,22 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - PDF Server</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css">
 </head>
 <body>
     @RenderBody()
+
+    <!-- Dependencies -->
+    <script src="./node_modules/react/dist/react.js"></script>
+    <script src="./node_modules/react-dom/dist/react-dom.js"></script>
+
+    <!-- Main -->
+    <script src="./dist/bundle.js"></script>
 </body>
 </html>
