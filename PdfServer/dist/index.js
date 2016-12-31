@@ -1,12 +1,8 @@
 "use strict";
 var React = require("react");
 var ReactDOM = require("react-dom");
-var injectTapEventPlugin = require("react-tap-event-plugin");
-injectTapEventPlugin();
-var getMuiTheme_1 = require("material-ui/styles/getMuiTheme");
-var styles_1 = require("material-ui/styles");
-var hello_1 = require("./components/hello");
-var lightMuiTheme = getMuiTheme_1.default(styles_1.lightBaseTheme);
-ReactDOM.render(React.createElement(styles_1.MuiThemeProvider, { muiTheme: lightMuiTheme },
-    React.createElement(hello_1.Hello, { compiler: "typescript", framework: "asp.net" })), document.getElementById("example"));
+var nav_1 = require("./components/nav");
+var listitem_1 = require("./components/listitem");
+ReactDOM.render(React.createElement(nav_1.Nav, { item1: "PDFs", item2: "Settings" }), document.getElementById("nav"));
+ReactDOM.render(React.createElement(listitem_1.ListItem, { active: true, selected: true, name: "template 1", tags: "initial", description: "i am just testing" }), document.getElementById("item1"));
 //# sourceMappingURL=index.js.map

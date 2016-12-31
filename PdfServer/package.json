@@ -2,21 +2,13 @@
   "name": "pdfserver",
   "version": "1.0.0",
   "description": "pdf server",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "Kevin Bernfeld, Velir",
   "license": "MIT",
   "dependencies": {
-    "@types/material-ui": "^0.16.46",
     "@types/react": "^0.14.55",
     "@types/react-dom": "^0.14.20",
-    "@types/react-tap-event-plugin": "0.0.30",
-    "babel-core": "^6.21.0",
-    "material-ui": "^0.16.6",
     "react": "^15.4.1",
-    "react-dom": "^15.4.1",
-    "react-tap-event-plugin": "^2.0.0"
+    "react-dom": "^15.4.1"
   },
   "devDependencies": {
     "awesome-typescript-loader": "^3.0.0-beta.17",

@@ -1,5 +1,9 @@
 "use strict";
 var React = require("react");
-var RaisedButton_1 = require("material-ui/RaisedButton");
-exports.Hello = function (props) { return React.createElement(RaisedButton_1.default, { label: "button!" }); };
+exports.Hello = function (props) { return React.createElement("h1", null,
+    "Hello from ",
+    props.compiler,
+    " and ",
+    props.framework,
+    "!"); };
 //# sourceMappingURL=hello.js.map

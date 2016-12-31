@@ -179,9 +179,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\email-old-ie.css" />
+    <Content Include="Content\email.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="img\nodejs-512.png" />
     <Content Include="webpack.config.js" />
     <Content Include="package.json" />
     <Content Include="Web.config" />
@@ -195,8 +198,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="tsconfig.json" />
   </ItemGroup>
@@ -226,7 +227,10 @@
     <Content Include="Views\Templates\Main.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="src\components\listitem.tsx" />
+    <TypeScriptCompile Include="src\components\list.tsx" />
     <TypeScriptCompile Include="src\components\hello.tsx" />
+    <TypeScriptCompile Include="src\components\nav.tsx" />
     <TypeScriptCompile Include="src\index.tsx" />
   </ItemGroup>
   <PropertyGroup>
