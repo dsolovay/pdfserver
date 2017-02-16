@@ -19,7 +19,7 @@ namespace PdfServer.Converter {
         }
     }
 
-    public class Option<T> {
+    public struct Option<T> {
         public bool success { get; set; }
         public T data { get; set; }
 

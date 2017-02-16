@@ -58,6 +58,14 @@
       <HintPath>..\packages\Autofac.Mvc5.4.0.0\lib\net451\Autofac.Integration.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.7\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -172,9 +180,17 @@
     <Compile Include="Controllers\ConvertController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PdfBaseController.cs" />
+    <Compile Include="Controllers\TemplateController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701041938203_templates.cs" />
+    <Compile Include="Migrations\201701041938203_templates.Designer.cs">
+      <DependentUpon>201701041938203_templates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Context.cs" />
+    <Compile Include="Models\Template.cs" />
     <Compile Include="Models\TemplateViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -198,12 +214,13 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="tsconfig.json" />
+    <Content Include="Views\Templates\Hello.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Scripts\" />
+    <Folder Include="Views\Home\" />
+    <Folder Include="Views\Template\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -227,11 +244,9 @@
     <Content Include="Views\Templates\Main.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="src\components\listitem.tsx" />
-    <TypeScriptCompile Include="src\components\list.tsx" />
-    <TypeScriptCompile Include="src\components\hello.tsx" />
-    <TypeScriptCompile Include="src\components\nav.tsx" />
-    <TypeScriptCompile Include="src\index.tsx" />
+    <EmbeddedResource Include="Migrations\201701041938203_templates.resx">
+      <DependentUpon>201701041938203_templates.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

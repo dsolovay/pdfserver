@@ -7,17 +7,18 @@ var __extends = (this && this.__extends) || function (d, b) {
 var React = require("react");
 var ListItem = (function (_super) {
     __extends(ListItem, _super);
-    function ListItem() {
-        var _this = _super.call(this) || this;
-        _this.state = {
-            selected: false,
-            active: true
-        };
+    function ListItem(props) {
+        var _this = _super.call(this, props) || this;
+        _this.handleChange = _this.handleChange.bind(_this);
         return _this;
     }
+    ListItem.prototype.handleChange = function (event) {
+        //this.props.onClick(event);
+    };
     ListItem.prototype.render = function () {
-        var _this = this;
-        return (React.createElement("div", { className: "list-item " + (this.state.selected ? "list-item-selected " : "") + (this.state.active ? "list-item-unread " : "") + "pure-g", onClick: function () { return _this.setState({ selected: !_this.state.selected, active: _this.state.active }); } },
+        var selected = this.props.selected ? "list-item-selected " : "";
+        var active = this.props.active ? "list-item-unread " : "";
+        return (React.createElement("div", { className: "list-item " + selected + active + "pure-g", onClick: this.handleChange, id: "list-item-" + this.props.id },
             React.createElement("div", { className: "pure-u" },
                 React.createElement("img", { width: "64", height: "64", className: "list-avatar", src: "/img/nodejs-512.png" })),
             React.createElement("div", { className: "pure-u-3-4" },
