@@ -7,6 +7,7 @@ using PdfServer.Converter;
 using PdfServer.Models;
 using Newtonsoft.Json;
 using System.Text;
+using System.Dynamic;
 
 namespace PdfServer.Controllers
 {
@@ -26,6 +27,8 @@ namespace PdfServer.Controllers
             {
                 return Json(new { error = "invalid request " });
             }
+
+            var data = JsonConvert.DeserializeObject<ExpandoObject>(m.Data);
 
             ViewData.Model = m;
 
@@ -90,25 +93,25 @@ namespace PdfServer.Controllers
             }
         }
 
-        public ActionResult Convert(string url, string pdfname = null)
-        {
-            var converter = new PdfConverter(@"D:\pdfs");
-            var args = new Args(url)
-            {
-                outputname = pdfname
-            };
-            var result = converter.Convert(args);
+        //public ActionResult Convert(string url, string pdfname = null)
+        //{
+        //    var converter = new PdfConverter(@"D:\pdfs");
+        //    var args = new Args(url)
+        //    {
+        //        outputname = pdfname
+        //    };
+        //    var result = converter.Convert(args);
 
-            if (result.success)
-            {
-                var file = System.IO.File.ReadAllBytes(result.data);
+        //    if (result.success)
+        //    {
+        //        var file = System.IO.File.ReadAllBytes(result.data);
 
-                return File(file, "application/pdf", args.outputname);
-            }
-            else
-            {
-                return Content(result.error);
-            }
-        }
+        //        return File(file, "application/pdf", args.outputname);
+        //    }
+        //    else
+        //    {
+        //        return Content(result.error);
+        //    }
+        //}
     }
 }
