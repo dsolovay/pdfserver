@@ -30,7 +30,7 @@ namespace PdfServer.Controllers
 
             var data = JsonConvert.DeserializeObject<ExpandoObject>(m.Data);
 
-            ViewData.Model = m;
+            ViewData.Model = data;
 
             var str = ToHtml($"~/Views/Templates/{m.Template}.cshtml", ViewData);
 
