@@ -59,22 +59,12 @@ namespace PdfServer.Converter
         {
             if (!File.Exists(wkloc))
             {
-                return new Result<string, string>
-                {
-                    success = false,
-                    data = "",
-                    error = "Could not find wkhtmltopdf.exe"
-                };
+                return Result<string, string>.Error("Could not find wkhtmltopdf.exe");
             }
 
             if (!Directory.Exists(output))
             {
-                return new Result<string, string>
-                {
-                    success = false,
-                    data = "",
-                    error = "Invalid output directory"
-                };
+                return Result<string, string>.Error("Invalid output directory");
             }
 
             args.outputname = Path.Combine(output, args.outputname);
@@ -147,12 +137,7 @@ namespace PdfServer.Converter
                             {
                                 if (converter.ExitCode != 0 && !File.Exists(args.outputname))
                                 {
-                                    return new Result<string, string>
-                                    {
-                                        success = false,
-                                        data = "",
-                                        error = $"Failed to write pdf. Error: {error.ToString()}"
-                                    };
+                                    return Result<string, string>.Error($"Failed to write pdf. Error: {error.ToString()}");
                                 }
                             }
                             else
@@ -161,12 +146,7 @@ namespace PdfServer.Converter
                                 {
                                     converter.Kill();
 
-                                    return new Result<string, string>
-                                    {
-                                        success = false,
-                                        data = "",
-                                        error = $"PDF generation timed out."
-                                    };
+                                    return Result<string, string>.Error("PDF generation timed out");
                                 }
                             }
                         }
@@ -180,30 +160,15 @@ namespace PdfServer.Converter
 
                 if (File.Exists(args.outputname))
                 {
-                    return new Result<string, string>
-                    {
-                        success = true,
-                        data = args.outputname,
-                        error = ""
-                    };
+                    return Result<string, string>.Success(args.outputname);
                 }
             }
             catch (Exception ex)
             {
-                return new Result<string, string>
-                {
-                    success = false,
-                    data = "",
-                    error = $"Unknown error: {ex.Message}"
-                };
+                return Result<string, string>.Error($"Unknown error: {ex.Message}");
             }
 
-            return new Result<string, string>
-            {
-                success = false,
-                data = "",
-                error = "Could not find wkhtmltopdf.exe"
-            };
+            return Result<string, string>.Error("Could not find wkhtmltopdf.exe");
         }
     }
 }
